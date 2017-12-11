@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "wiremock.rootDirectory",
+      "type": "java.lang.String",
+      "description": "Description for wiremock.rootDirectory."
+    }
+  ]
+}

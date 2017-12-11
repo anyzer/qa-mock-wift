@@ -1,0 +1,28 @@
+{
+  "scenarioName": "GetData",
+  "requiredScenarioState": "get_data_7",
+  "newScenarioState": "get_data_8",
+  "request": {
+    "method": "POST",
+    "url": "/WIFT/GetData",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "text/plain; charset=ISO-8859-1"
+      }
+    },
+    "bodyPatterns" : [
+      {
+        "contains" : "sessionid=",
+        "contains" : "ack=",
+        "contains" : "maxtrans="
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "6_abandon_race_1_vic.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

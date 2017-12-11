@@ -1,0 +1,29 @@
+{
+  "scenarioName": "GetData",
+  "requiredScenarioState": "get_data_3",
+  "newScenarioState": "get_data_4",
+  "request": {
+    "method": "POST",
+    "url": "/WIFT/GetData",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "text/plain; charset=ISO-8859-1"
+      }
+    },
+    "bodyPatterns" : [
+      {
+        "contains" : "sessionid=",
+        "contains" : "ack=",
+        "contains" : "maxtrans="
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "fixedDelayMilliseconds": 2000,
+    "bodyFileName": "3_update_race_1_scratch_6_7_8.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

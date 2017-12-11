@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/WIFT/GetSchema",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "text/plain; charset=ISO-8859-1"
+      }
+    },
+    "bodyPatterns" : [
+      {
+        "contains" : "username=",
+        "contains" : "password=",
+        "contains" : "filter=Racing"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "get_schema.xml",
+    "headers": {
+      "Content-Type": "application/xml"
+    }
+  }
+}

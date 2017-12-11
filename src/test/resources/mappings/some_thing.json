@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/some/thing"
+  },
+  "response": {
+    "status": 200,
+//    "bodyFileName": "something.json",
+    "body": "{ \"message\": \"HELO WOLD\", \"date\":\"234234\" }",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

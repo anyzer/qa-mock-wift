@@ -1,0 +1,29 @@
+{
+  "scenarioName": "GetData",
+  "requiredScenarioState": "get_data_9",
+  "newScenarioState": "get_data_10",
+  "request": {
+    "method": "POST",
+    "url": "/WIFT/GetData",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "text/plain; charset=ISO-8859-1"
+      }
+    },
+    "bodyPatterns" : [
+      {
+        "contains" : "sessionid=",
+        "contains" : "ack=",
+        "contains" : "maxtrans="
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "fixedDelayMilliseconds": 2000,
+    "bodyFileName": "8_race2_start_sell_pools_vic.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Racing" version="19" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xs:simpleType name="ActionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Insert" />
+			<xs:enumeration value="Update" />
+			<xs:enumeration value="Delete" />
+			<xs:enumeration value="Truncate" />
+			<xs:enumeration value="Archive" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="SurfaceTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Grass" />
+			<xs:enumeration value="Synthetic" />
+			<xs:enumeration value="Dirt" />
+			<xs:enumeration value="Sand" />
+			<xs:enumeration value="Turf" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="EventStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Normal" />
+			<xs:enumeration value="Abandoned" />
+			<xs:enumeration value="Postponed" />
+			<xs:enumeration value="Protest" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="RaceStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="NotRun" />
+			<xs:enumeration value="PendingJump" />
+			<xs:enumeration value="Running" />
+			<xs:enumeration value="Finished" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ContestantStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Normal" />
+			<xs:enumeration value="Scratched" />
+			<xs:enumeration value="LateScratched" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="WageringProductType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Win" />
+			<xs:enumeration value="Place" />
+			<xs:enumeration value="Trifecta" />
+			<xs:enumeration value="DailyDouble" />
+			<xs:enumeration value="ExtraDouble" />
+			<xs:enumeration value="Quinella" />
+			<xs:enumeration value="EarlyQuaddie" />
+			<xs:enumeration value="Quaddie" />
+			<xs:enumeration value="RunningDouble" />
+			<xs:enumeration value="Exacta" />
+			<xs:enumeration value="Duet" />
+			<xs:enumeration value="FirstFour" />
+			<xs:enumeration value="Big6" />
+			<xs:enumeration value="HalfDouble" />
+			<xs:enumeration value="QuarterQuad" />
+			<xs:enumeration value="PickTheMargins" />
+			<xs:enumeration value="PickTheWinners" />
+			<xs:enumeration value="PickTheScores" />
+			<xs:enumeration value="Trio" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PoolStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Closed" />
+			<xs:enumeration value="Open" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="DividendStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Interim" />
+			<xs:enumeration value="Final" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="BettingStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Closed" />
+			<xs:enumeration value="Open" />
+			<xs:enumeration value="Suspended" />
+			<xs:enumeration value="Scratched" />
+			<xs:enumeration value="LateScratched" />
+			<xs:enumeration value="Winner" />
+			<xs:enumeration value="Placing" />
+			<xs:enumeration value="Loser" />
+			<xs:enumeration value="Tie" />
+			<xs:enumeration value="Refund" />
+			<xs:enumeration value="Reserve" />
+			<xs:enumeration value="Resulted" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CommissionRateTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Default" />
+			<xs:enumeration value="Races" />
+			<xs:enumeration value="Harness" />
+			<xs:enumeration value="Greyhounds" />
+			<xs:enumeration value="Sports" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="Source">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Name" type="xs:string" minOccurs="0" />
+				<xs:element name="Description" type="xs:string" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="SourcePK">
+			<xs:selector xpath="./Source" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+	</xs:element>
+
+	<xs:element name="SportCode">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Name" type="xs:string" minOccurs="0" />
+				<xs:element name="DisplayName" type="xs:string" minOccurs="0" />
+				<xs:element name="SpectrumID" type="xs:int" minOccurs="0" />
+				<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="SportCodePK">
+			<xs:selector xpath="./SportCode" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+	</xs:element>
+
+	<xs:element name="Tote">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ToteCode" type="xs:string" minOccurs="0" />
+				<xs:element name="Name" type="xs:string" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="TotePK">
+			<xs:selector xpath="./Tote" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+	</xs:element>
+
+	<xs:element name="Meeting">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UniqueMeetingId" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="MeetingDate" type="xs:date" minOccurs="0" />
+				<xs:element name="VenueName" type="xs:string" minOccurs="0" />
+				<xs:element name="VenueLocation" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="MeetingName" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="SportCodeId" type="xs:long" minOccurs="0" />
+				<xs:element name="WeatherCondition" type="xs:string" minOccurs="0" nillable="true"/>
+				<xs:element name="SurfaceType" type="SurfaceTypeType" minOccurs="0" nillable="true" />
+				<xs:element name="SurfaceCondition" type="xs:string" minOccurs="0" nillable="true"/>
+				<xs:element name="TimeZoneAtVenue" type="xs:duration" minOccurs="0" nillable="true" />
+				<xs:element name="SkyTrackCode" type="xs:string" minOccurs="0" nillable="true" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="MeetingPK">
+			<xs:selector xpath="./Meeting" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="MeetingSportCodeIdFK" refer="SportCodePK">
+			<xs:selector xpath="./Meeting" />
+			<xs:field xpath="@SportCodeId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="SourceMeeting">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SourceId" type="xs:long" minOccurs="0" />
+				<xs:element name="MeetingId" type="xs:long" minOccurs="0" />
+				<xs:element name="Key1" type="xs:string" minOccurs="0" />
+				<xs:element name="Key2" type="xs:string" minOccurs="0" />
+				<xs:element name="Key3" type="xs:string" minOccurs="0" />
+				<xs:element name="NrtjPriority" type="xs:int" minOccurs="0" />
+				<xs:element name="NrtjArstWindow" type="xs:duration" minOccurs="0" nillable="true" />
+				<xs:element name="NrtjDelayThreshold" type="xs:duration" minOccurs="0" nillable="true" />
+				<xs:element name="VenueMnemonic" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="VenueLocation" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="TimeOfDayOnEastCoastOfAustralia" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="VenueCodeNumber" type="xs:int" minOccurs="0" />
+				<xs:element name="BettingStatus" type="BettingStatusType" minOccurs="0" nillable="true" />
+				<xs:element name="RetailMeeting" type="xs:boolean" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="SourceMeetingPK">
+			<xs:selector xpath="./SourceMeeting" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="SourceMeetingSourceIdFK" refer="SourcePK">
+			<xs:selector xpath="./SourceMeeting" />
+			<xs:field xpath="@SourceId" />
+		</xs:keyref>
+		<xs:keyref name="SourceMeetingMeetingIdFK" refer="MeetingPK">
+			<xs:selector xpath="./SourceMeeting" />
+			<xs:field xpath="@MeetingId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="Event">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UniqueEventId" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="MeetingId" type="xs:long" minOccurs="0" />
+				<xs:element name="WeatherCondition" type="xs:string" minOccurs="0" nillable="true"/>
+				<xs:element name="SurfaceCondition" type="xs:string" minOccurs="0" nillable="true"/>
+				<xs:element name="Number" type="xs:int" minOccurs="0" />
+				<xs:element name="StartTime" type="xs:dateTime" minOccurs="0" />
+				<xs:element name="Name" type="xs:string" minOccurs="0" />
+				<xs:element name="Distance" type="xs:int" minOccurs="0" />
+				<xs:element name="GeneralStatus" type="xs:string" minOccurs="0" />
+				<xs:element name="ProtestDetail" type="xs:string" minOccurs="0" />
+				<xs:element name="ProtestOutcome" type="xs:string" minOccurs="0" />
+				<xs:element name="RaceStatus" type="RaceStatusType" minOccurs="0" />
+				<xs:element name="PendingJumpStatusExpected" type="xs:boolean" minOccurs="0" />
+				<xs:element name="NumOfAcceptors" type="xs:int" minOccurs="0" />
+				<xs:element name="NumOfStarters" type="xs:int" minOccurs="0" />
+				<xs:element name="ResultedTime" type="xs:dateTime" minOccurs="0" nillable="true" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="EventPK">
+			<xs:selector xpath="./Event" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="EventMeetingIdFK" refer="MeetingPK">
+			<xs:selector xpath="./Event" />
+			<xs:field xpath="@MeetingId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="SourceEvent">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SourceId" type="xs:long" minOccurs="0" />
+				<xs:element name="EventId" type="xs:long" minOccurs="0" />
+				<xs:element name="EventStatus" type="EventStatusType" minOccurs="0" />
+				<xs:element name="Feature" type="xs:boolean" minOccurs="0" />
+				<xs:element name="Substitute" type="xs:string" minOccurs="0" />
+				<xs:element name="AbandonReason" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="CustomerAdvisoryMessage" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="BettingStatus" type="BettingStatusType" minOccurs="0" nillable="true" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="SourceEventPK">
+			<xs:selector xpath="./SourceEvent" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="SourceEventSourceIdFK" refer="SourcePK">
+			<xs:selector xpath="./SourceEvent" />
+			<xs:field xpath="@SourceId" />
+		</xs:keyref>
+		<xs:keyref name="SourceEventEventIdFK" refer="EventPK">
+			<xs:selector xpath="./SourceEvent" />
+			<xs:field xpath="@EventId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="Contestant">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UniqueContestantId" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="EventId" type="xs:long" minOccurs="0" />
+				<xs:element name="ContestantStatus" type="ContestantStatusType" minOccurs="0" nillable="true" />
+				<xs:element name="ContestantStatusUpdateTime" type="xs:dateTime" minOccurs="0" nillable="true" />
+				<xs:element name="Number" type="xs:int" minOccurs="0" />
+				<xs:element name="StartingPosition" type="xs:int" minOccurs="0" nillable="true" />
+				<xs:element name="FinishingPosition" type="xs:int" minOccurs="0" nillable="true" />
+				<xs:element name="Emergency" type="xs:boolean" minOccurs="0" />
+				<xs:element name="Name" type="xs:string" minOccurs="0" />
+				<xs:element name="Rider" type="xs:string" minOccurs="0" />
+				<xs:element name="Blinkers" type="xs:boolean" minOccurs="0" nillable="true" />
+				<xs:element name="HandicapperRating" type="xs:int" minOccurs="0" nillable="true" />
+				<xs:element name="OriginalRider" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="OriginalBarrier" type="xs:int" minOccurs="0" nillable="true" />
+				<xs:element name="TCDWIndicators" type="xs:string" minOccurs="0" nillable="true" />
+				<xs:element name="Last5Starts" type="xs:string" minOccurs="0" nillable="true" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="ContestantPK">
+			<xs:selector xpath="./Contestant" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="ContestantEventIdFK" refer="EventPK">
+			<xs:selector xpath="./Contestant" />
+			<xs:field xpath="@EventId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="WageringProductCode">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Name" type="xs:string" minOccurs="0" />
+				<xs:element name="WageringProductNumber" type="xs:int" minOccurs="0" />
+				<xs:element name="Mnc2" type="xs:string" minOccurs="0" />
+				<xs:element name="Mnc3" type="xs:string" minOccurs="0" />
+				<xs:element name="Mnc12" type="xs:string" minOccurs="0" />
+				<xs:element name="NumOfLegs" type="xs:int" minOccurs="0" />
+				<xs:element name="NumOfPositions" type="xs:int" minOccurs="0" />
+				<xs:element name="MinAcceptors" type="xs:int" minOccurs="0" />
+				<xs:element name="MinStarters" type="xs:int" minOccurs="0" />
+				<xs:element name="MaxStarters" type="xs:int" minOccurs="0" />
+				<xs:element name="CountbackApplies" type="xs:boolean" minOccurs="0" />
+				<xs:element name="JackpotApplies" type="xs:boolean" minOccurs="0" />
+				<xs:element name="FlexiApplies" type="xs:boolean" minOccurs="0" />
+				<xs:element name="MysteryApplies" type="xs:boolean" minOccurs="0" />
+				<xs:element name="ParlayApplies" type="xs:boolean" minOccurs="0" />
+				<xs:element name="BoxApplies" type="xs:boolean" minOccurs="0" />
+				<xs:element name="NumOfRovingBankerSelns" type="xs:int" minOccurs="0" />
+				<xs:element name="StandoutSelectionApplies" type="xs:boolean" minOccurs="0" />
+				<xs:element name="IsRacing" type="xs:boolean" minOccurs="0" />
+				<xs:element name="IsComposite" type="xs:boolean" minOccurs="0" />
+				<xs:element name="DisplayOrder" type="xs:int" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="WageringProductCodePK">
+			<xs:selector xpath="./WageringProductCode" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+	</xs:element>
+
+	<xs:element name="Pool">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SourceId" type="xs:long" minOccurs="0" />
+				<xs:element name="WageringProduct" type="WageringProductType" minOccurs="0" />
+				<xs:element name="WageringProductCodeId" type="xs:long" minOccurs="0" nillable="true" />
+				<xs:element name="PoolStatus" type="PoolStatusType" minOccurs="0" />
+				<xs:element name="Tier" type="xs:int" minOccurs="0" />
+				<xs:element name="Total" type="xs:decimal" minOccurs="0" />
+				<xs:element name="NetTotal" type="xs:decimal" minOccurs="0" />
+				<xs:element name="GuaranteedTotal" type="xs:decimal" minOccurs="0" />
+				<xs:element name="JackpotBroughtFwd" type="xs:decimal" minOccurs="0" />
+				<xs:element name="JackpotCarriedOver" type="xs:decimal" minOccurs="0" />
+				<xs:element name="ExpectedDividends" type="xs:int" minOccurs="0" />
+				<xs:element name="CountBackLevelDescription" type="xs:string" minOccurs="0" />
+				<xs:element name="Name" type="xs:string" minOccurs="0" />
+				<xs:element name="Description" type="xs:string" minOccurs="0" />
+				<xs:element name="PoolIdentifier" type="xs:int" minOccurs="0" />
+				<xs:element name="ControllingToteId" type="xs:long" minOccurs="0" />
+				<xs:element name="OddsTime" type="xs:dateTime" minOccurs="0" />
+				<xs:element name="PercentContribution" type="xs:decimal" minOccurs="0" />
+				<xs:element name="SupplementaryDividendRule" type="xs:string" minOccurs="0" nillable="true"/>
+				<xs:element name="CloseTime" type="xs:dateTime" minOccurs="0" nillable="true" />
+				<xs:element name="CommissionPercentageRate" type="xs:decimal" minOccurs="0" nillable="true" />
+				<xs:element name="CashOutAllowed" type="xs:boolean" minOccurs="0" />
+				<xs:element name="NetPoolGuaranteeAmount" type="xs:decimal" minOccurs="0" nillable="true" />
+				<xs:element name="CollationPercentContribution" type="xs:decimal" minOccurs="0" nillable="true" />
+				<xs:element name="CollationPoolTotal" type="xs:decimal" minOccurs="0" nillable="true" />
+				<xs:element name="CollationTime" type="xs:dateTime" minOccurs="0" />
+				<xs:element name="FinalCollationIndicator" type="xs:boolean" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="PoolPK">
+			<xs:selector xpath="./Pool" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="PoolSourceIdFK" refer="SourcePK">
+			<xs:selector xpath="./Pool" />
+			<xs:field xpath="@SourceId" />
+		</xs:keyref>
+		<xs:keyref name="PoolWageringProductCodeIdFK" refer="WageringProductCodePK">
+			<xs:selector xpath="./Pool" />
+			<xs:field xpath="@WageringProductCodeId" />
+		</xs:keyref>
+		<xs:keyref name="PoolControllingToteIdFK" refer="TotePK">
+			<xs:selector xpath="./Pool" />
+			<xs:field xpath="@ControllingToteId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="PoolEvent">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PoolId" type="xs:long" minOccurs="0" />
+				<xs:element name="EventId" type="xs:long" minOccurs="0" />
+				<xs:element name="LegNumber" type="xs:int" minOccurs="0" />
+				<xs:element name="Substitute" type="xs:string" minOccurs="0" />
+				<xs:element name="SubstitutedSelections" type="xs:string" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="PoolEventPK">
+			<xs:selector xpath="./PoolEvent" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="PoolEventPoolIdFK" refer="PoolPK">
+			<xs:selector xpath="./PoolEvent" />
+			<xs:field xpath="@PoolId" />
+		</xs:keyref>
+		<xs:keyref name="PoolEventEventIdFK" refer="EventPK">
+			<xs:selector xpath="./PoolEvent" />
+			<xs:field xpath="@EventId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="PoolGuest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PoolId" type="xs:long" minOccurs="0" />
+				<xs:element name="ToteId" type="xs:long" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="PoolGuestPK">
+			<xs:selector xpath="./PoolGuest" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="PoolGuestPoolIdFK" refer="PoolPK">
+			<xs:selector xpath="./PoolGuest" />
+			<xs:field xpath="@PoolId" />
+		</xs:keyref>
+		<xs:keyref name="PoolGuestToteIdFK" refer="TotePK">
+			<xs:selector xpath="./PoolGuest" />
+			<xs:field xpath="@ToteId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="Dividend">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PoolId" type="xs:long" minOccurs="0" />
+				<xs:element name="DividendNumber" type="xs:int" minOccurs="0" />
+				<xs:element name="DividendStatus" type="DividendStatusType" minOccurs="0" />
+				<xs:element name="SelectionsString" type="xs:string" minOccurs="0" />
+				<xs:element name="Amount" type="xs:decimal" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="DividendPK">
+			<xs:selector xpath="./Dividend" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="DividendPoolIdFK" refer="PoolPK">
+			<xs:selector xpath="./Dividend" />
+			<xs:field xpath="@PoolId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="Odds">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PoolId" type="xs:long" minOccurs="0" />
+				<xs:element name="SelectionsString" type="xs:string" minOccurs="0" />
+				<xs:element name="Amount" type="xs:decimal" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="OddsPK">
+			<xs:selector xpath="./Odds" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="OddsPoolIdFK" refer="PoolPK">
+			<xs:selector xpath="./Odds" />
+			<xs:field xpath="@PoolId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="BroadcastChannel">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Name" type="xs:string" minOccurs="0" />
+				<xs:element name="SpectrumID" type="xs:string" minOccurs="0" nillable="true" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="BroadcastChannelPK">
+			<xs:selector xpath="./BroadcastChannel" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+	</xs:element>
+
+	<xs:element name="BroadcastChannelMapping">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BroadcastChannelId" type="xs:long" minOccurs="0" nillable="true" />
+				<xs:element name="SourceEventId" type="xs:long" minOccurs="0" nillable="true" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="BroadcastChannelMappingPK">
+			<xs:selector xpath="./BroadcastChannelMapping" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="BroadcastChannelMappingBroadcastChannelIdFK" refer="BroadcastChannelPK">
+			<xs:selector xpath="./BroadcastChannelMapping" />
+			<xs:field xpath="@BroadcastChannelId" />
+		</xs:keyref>
+		<xs:keyref name="BroadcastChannelMappingSourceEventIdFK" refer="SourceEventPK">
+			<xs:selector xpath="./BroadcastChannelMapping" />
+			<xs:field xpath="@SourceEventId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="MultiConfiguration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SourceId" type="xs:long" minOccurs="0" />
+				<xs:element name="DeviceType" type="xs:string" minOccurs="0" />
+				<xs:element name="MaxMultiLegs" type="xs:int" minOccurs="0" />
+				<xs:element name="MaxRacingLegs" type="xs:int" minOccurs="0" />
+				<xs:element name="MaxSportsLegs" type="xs:int" minOccurs="0" />
+				<xs:element name="MaxFormulaMultiLegs" type="xs:int" minOccurs="0" />
+				<xs:element name="AllowCross" type="xs:boolean" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="MultiConfigurationPK">
+			<xs:selector xpath="./MultiConfiguration" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="MultiConfigurationSourceIdFK" refer="SourcePK">
+			<xs:selector xpath="./MultiConfiguration" />
+			<xs:field xpath="@SourceId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="CommissionRate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="SourceId" type="xs:long" minOccurs="0" nillable="true" />
+				<xs:element name="WageringProductCodeId" type="xs:long" minOccurs="0" nillable="true" />
+				<xs:element name="CommissionRateType" type="CommissionRateTypeType" minOccurs="0" />
+				<xs:element name="CommissionPercentageRate" type="xs:decimal" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="CommissionRatePK">
+			<xs:selector xpath="./CommissionRate" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="CommissionRateSourceIdFK" refer="SourcePK">
+			<xs:selector xpath="./CommissionRate" />
+			<xs:field xpath="@SourceId" />
+		</xs:keyref>
+		<xs:keyref name="CommissionRateWageringProductCodeIdFK" refer="WageringProductCodePK">
+			<xs:selector xpath="./CommissionRate" />
+			<xs:field xpath="@WageringProductCodeId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:element name="Collation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PoolId" type="xs:long" minOccurs="0" />
+				<xs:element name="SelectionsString" type="xs:string" minOccurs="0" />
+				<xs:element name="InvestmentAmount" type="xs:decimal" minOccurs="0" />
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:long" use="required" />
+			<xs:attribute name="Action" type="ActionType" use="required" />
+		</xs:complexType>
+		<xs:key name="CollationPK">
+			<xs:selector xpath="./Collation" />
+			<xs:field xpath="@Id" />
+		</xs:key>
+		<xs:keyref name="CollationPoolIdFK" refer="PoolPK">
+			<xs:selector xpath="./Collation" />
+			<xs:field xpath="@PoolId" />
+		</xs:keyref>
+	</xs:element>
+
+	<xs:complexType name="Row">
+		<xs:choice>
+			<xs:element ref="Source" />
+			<xs:element ref="SportCode" />
+			<xs:element ref="Tote" />
+			<xs:element ref="Meeting" />
+			<xs:element ref="SourceMeeting" />
+			<xs:element ref="Event" />
+			<xs:element ref="SourceEvent" />
+			<xs:element ref="Contestant" />
+			<xs:element ref="WageringProductCode" />
+			<xs:element ref="Pool" />
+			<xs:element ref="PoolEvent" />
+			<xs:element ref="PoolGuest" />
+			<xs:element ref="Dividend" />
+			<xs:element ref="Odds" />
+			<xs:element ref="BroadcastChannel" />
+			<xs:element ref="BroadcastChannelMapping" />
+			<xs:element ref="MultiConfiguration" />
+			<xs:element ref="CommissionRate" />
+			<xs:element ref="Collation" />
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="Response">
+		<xs:sequence>
+			<xs:element name="Transaction" type="Transaction" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="Session" type="xs:string" use="required" />
+		<xs:attribute name="Sequence" type="xs:string" use="required" />
+		<xs:attribute name="SnapShot" type="xs:boolean" use="optional" />
+		<xs:attribute name="SnapshotQueue" type="xs:string" use="optional" />
+		<xs:attribute name="DeltaQueue" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="Transaction">
+		<xs:sequence>
+			<xs:element name="Row" type="Row" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="Response" type="Response" />
+
+</xs:schema>

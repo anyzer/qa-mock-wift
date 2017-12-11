@@ -1,0 +1,37 @@
+{ "Response" : {
+    "Session": "d6adbaee-9645-480e-81e5-6fbbdd1c4a63",
+    "Sequence": "347",
+    "DeltaQueue": 0,
+    "Transaction": [
+        {
+            "Row": [
+                {
+                    "Action": "Update",
+                    "Id": 95295,
+                    "Pool": {
+                        "PoolStatus": "Closed",
+                        "ExpectedDividends": 1,
+                        "OddsTime": "2017-01-16T02:15:03Z",
+                        "CloseTime": "2017-01-16T01:38:05Z",
+                        "CashOutAllowed": true,
+                        "CollationTime": "2017-01-16T02:15:03Z",
+                        "FinalCollationIndicator": true
+                    }
+                },
+                {
+                    "Action": "Update",
+                    "Id": 95297,
+                    "Pool": {
+                        "PoolStatus": "Closed",
+                        "ExpectedDividends": 1,
+                        "OddsTime": "2017-01-16T02:15:03Z",
+                        "CloseTime": "2017-01-16T01:38:05Z",
+                        "CashOutAllowed": true,
+                        "CollationTime": "2017-01-16T02:15:03Z",
+                        "FinalCollationIndicator": true
+                    }
+                }
+            ]
+        }
+    ]
+}}

@@ -1,0 +1,15 @@
+{
+  "Response": {
+    "Session": "672e1d4e-54f5-4ba7-84cf-88f0b77a759d",
+    "Sequence": "5",
+    "SnapShot": true,
+    "SnapshotQueue": 844730,
+    "DeltaQueue": 38406,
+    "Transaction": [
+      {
+        "Row": [
+        ]
+      }
+    ]
+  }
+}

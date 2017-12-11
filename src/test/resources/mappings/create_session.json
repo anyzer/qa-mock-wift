@@ -1,0 +1,26 @@
+{
+  "request": {
+    "url": "/WIFT/CreateSession",
+    "method": "POST",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "text/plain; charset=ISO-8859-1"
+      }
+    },
+    "bodyPatterns" : [
+      {
+        "contains" : "username=",
+        "contains" : "password=",
+        "contains" : "maxsnapshottranssize=",
+        "contains" : "dataexchangeformat=json"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "create_session.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

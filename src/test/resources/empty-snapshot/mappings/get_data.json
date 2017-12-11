@@ -1,0 +1,28 @@
+{
+  "scenarioName": "GetData",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "update_end",
+  "request": {
+    "method": "POST",
+    "url": "/WIFT/GetData",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "text/plain; charset=ISO-8859-1"
+      }
+    },
+    "bodyPatterns" : [
+      {
+        "contains" : "sessionid=",
+        "contains" : "ack=",
+        "contains" : "maxtrans="
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "update_end.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
