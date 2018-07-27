@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.tabcorp.qa</groupId>
-    <artifactId>wiremock-server</artifactId>
+    <artifactId>qa-mock-wift</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>wiremock-server-wift</name>
+    <name>wift-wiremock-server</name>
     <description>Dockerised Wiremock App</description>
 
     <parent>
