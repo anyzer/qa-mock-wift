@@ -1,12 +1,16 @@
 {
   "request": {
-    "method": "GET",
-    "url": "/some/thing"
+    "method": "POST",
+    "url": "/some/thing",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json"
+      }
+    }
   },
   "response": {
     "status": 200,
-//    "bodyFileName": "something.json",
-    "body": "{ \"message\": \"HELO WOLD\", \"date\":\"234234\" }",
+    "bodyFileName": "update.json",
     "headers": {
       "Content-Type": "application/json"
     }

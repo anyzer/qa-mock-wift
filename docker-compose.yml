@@ -1,6 +1,10 @@
-version: '2'
-services:
+version: "3"
+networks:
+  default:
+    external:
+      name: wiftMock
 
+services:
   wift-mock-server:
     image: openjdk:8-jre
     networks:
@@ -18,5 +22,3 @@ services:
      - WIREMOCK_ROOTDIRECTORY=.
     command: java -jar /bin/qa-mock-wift-0.0.1-SNAPSHOT.jar
 
-networks:
-  wift-network:

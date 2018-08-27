@@ -9,9 +9,10 @@
     },
     "bodyPatterns" : [
       {
-        "contains" : "username=",
-        "contains" : "password=",
-        "contains" : "filter=Racing"
+//        "contains" : "username=",
+//        "contains" : "password=",
+//        "contains" : "filter=Racing"
+        "contains" : "="
       }
     ]
   },

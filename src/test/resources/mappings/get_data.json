@@ -1,10 +1,10 @@
 {
-  "scenarioName": "GetData",
-  "requiredScenarioState": "Started",
-  "newScenarioState": "get_data_3",
+//  "scenarioName": "GetData",
+//  "requiredScenarioState": "Started",
+//  "newScenarioState": "get_data_3",
   "request": {
-    "method": "POST",
     "url": "/WIFT/GetData",
+    "method": "POST",
     "headers": {
       "Content-Type": {
         "equalTo": "text/plain; charset=ISO-8859-1"
@@ -12,9 +12,10 @@
     },
     "bodyPatterns" : [
       {
-        "contains" : "sessionid=",
-        "contains" : "ack=",
-        "contains" : "maxtrans="
+//        "contains" : "sessionid=",
+//        "contains" : "ack=",
+//        "contains" : "maxtrans="
+        "contains" : "="
       }
     ]
   },
