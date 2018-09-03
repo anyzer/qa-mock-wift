@@ -23,17 +23,10 @@ dist/
 nbdist/
 .nb-gradle/
 
-## wift adapter ##
-locs-wift-adapter/
-locs-rest-test/
-#wift_data/
-
 .DS_Store
 *.log
 *.log.1
 
 Sample.feafture
 
-testbucket/
-testbucket.metadata/
 

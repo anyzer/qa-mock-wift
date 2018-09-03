@@ -1,7 +1,7 @@
 {
-//  "scenarioName": "GetData",
-//  "requiredScenarioState": "Started",
-//  "newScenarioState": "get_data_3",
+  "scenarioName": "GetData",
+  "requiredScenarioState": "Started",
+  "newScenarioState": "get_data_3",
   "request": {
     "url": "/WIFT/GetData",
     "method": "POST",

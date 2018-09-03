@@ -1,5 +1,5 @@
 {
-//  "newScenarioState": "Started",
+  "newScenarioState": "Started",
   "request": {
     "url": "/WIFT/CreateSession",
     "method": "POST",
